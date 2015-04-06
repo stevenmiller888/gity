@@ -1,5 +1,5 @@
 
-# git (WIP)
+# gity (WIP)
 
 A nice Git wrapper for Node.
 
