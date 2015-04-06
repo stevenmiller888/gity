@@ -5,12 +5,12 @@ A nice Git wrapper for Node.
 
 ## Installation
 
-    $ npm install git-wrapper
+    $ npm install gity
 
 ## Examples
 
 ```js
-var Git = require('git-wrapper');
+var Git = require('gity');
 
 var git = Git()
   .init()
@@ -24,7 +24,7 @@ var git = Git()
 ```
 
 ```js
-var Git = require('git-wrapper');
+var Git = require('gity');
 
 var git = Git({ base: '../repo' })
   .add('*.js')
