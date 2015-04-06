@@ -5,7 +5,7 @@ A nice Git wrapper for Node.
 
 ## Installation
 
-  $ npm install git-wrapper
+    $ npm install git-wrapper
 
 ## Examples
 
