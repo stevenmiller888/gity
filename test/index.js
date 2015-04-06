@@ -52,48 +52,47 @@ describe('Git', function(){
     });
   });
   
-  // it('should add files to staging area', function(done){
-  //   var folder = '../' + uid();
-  //   exec('mkdir ' + folder, function(){
-  //     var git = new Git({ base: folder });
-  //     git.init(folder, function(){ // this sucks
-  //       exec('touch ' + folder + '/index.js', function(){
-  //         exec('cd ' + folder, function(){
-  //           git.add('index.js', function(err, res){
-  //             exec('cd ' + '../git', function(err, res){
-  //               if (err) throw new Error('Not added as git repository');
-  //               exec('rm -rf ' + folder);
-  //               done();
-  //             });
-  //           });
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
-  //
-  // it('should commit to working tree', function(done){
-  //   var folder = '../' + uid();
-  //   exec('mkdir ' + folder, function(){
-  //     var git = new Git({ base: folder });
-  //     git.init(folder, function(){
-  //       exec('touch ' + folder + '/index.js', function(){
-  //         exec('cd ' + folder, function(){
-  //           git.add('index.js', function(err, res){ // this sucks
-  //             git.commit('-m "test"', function(err, res){
-  //               exec('cd ' + '../git', function(err, res){
-  //                 if (err) throw new Error('Not committed to the working tree');
-  //                 exec('rm -rf ' + folder);
-  //                 done();
-  //               });
-  //             });
-  //           });
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
-  //
+  it('should add files to staging area', function(done){
+    var folder = '../' + uid();
+    exec('mkdir ' + folder, function(){
+      exec('touch ' + folder + '/index.js', function(){
+        exec('cd ' + folder, function(){
+          var git = new Git({ base: folder })
+            .init()
+            .add('index.js')
+            .run(function(err, res){
+              if (err) throw new Error('Not added as git repository');
+              exec('cd ' + '../git', function(err, res){
+                exec('rm -rf ' + folder);
+                done();
+              });
+            });
+        });
+      });
+    });
+  });
+  
+  it('should commit to working tree', function(done){
+    var folder = '../' + uid();
+    exec('mkdir ' + folder, function(){
+      exec('touch ' + folder + '/index.js', function(){
+        exec('cd ' + folder, function(){
+          var git = new Git({ base: folder })
+            .init()
+            .add('index.js')
+            .commit('-m "test"')
+            .run(function(err, res){
+              if (err) throw new Error('Not committed to the working tree');
+              exec('cd ' + '../git', function(err, res){
+                exec('rm -rf ' + folder);
+                done();
+              });
+            })
+        });
+      });
+    });
+  });
+
   // it('should give repo\'s status', function(done){
   //   var folder = '../' + uid();
   //   exec('mkdir ' + folder, function(){
