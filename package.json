@@ -1,7 +1,7 @@
 {
-  "name": "git-wrapper",
+  "name": "gity",
   "version": "0.0.1",
-  "repository": "stevenmiller888/git.git",
+  "repository": "stevenmiller888/gity",
   "description": "A nice Git wrapper for Node.",
   "keywords": [
     "git",
