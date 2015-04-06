@@ -1,0 +1,21 @@
+{
+  "name": "git-wrapper",
+  "version": "0.0.1",
+  "repository": "stevenmiller888/git.git",
+  "description": "A nice Git wrapper for Node.",
+  "keywords": [
+    "git",
+    "wrapper",
+    "git-js",
+    "git-wrapper"
+  ],
+  "main": "lib/index.js",
+  "devDependencies": {
+    "mocha": "1.x",
+    "uid": "0.0.2"
+  },
+  "dependencies": {
+    "ware": "^1.2.0"
+  },
+  "license": "MIT"
+}
