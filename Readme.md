@@ -37,13 +37,13 @@ var git = Git({ base: '../repo' })
 
 ## API
 
-### Init
+### .init()
 
 ```js
 git.init();
 git.init('-q');
 ```
-### Add
+### .add()
 
 ```js
 git.add('-A');
@@ -52,7 +52,7 @@ git.add('--All');
 git.add('index.js');
 ```
 
-### Commit
+### .commit()
 
 ```js
 git.commit('--short');
@@ -60,7 +60,7 @@ git.commit('--porcelain');
 git.commit('-m "testing"');
 ```
 
-### Run
+### .run()
 
 ```js
 git.run();
