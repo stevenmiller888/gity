@@ -4,7 +4,6 @@
  */
 
 var exec = require('child_process').exec;
-var exists = require('fs').exists;
 var assert = require('assert');
 var uid = require('uid');
 var Git = require('..');
@@ -43,7 +42,7 @@ describe('Git', function(){
         .init()
         .run(function(err, res){
           if (err) throw new Error(err);
-          fs.exists(folder + '/.git', function (exists){
+          fs.exists(folder + '/.git', function(exists){
             exec('rm -rf ' + folder);
             if (!exists) throw new Error('Repo is not git repository');
             done();
