@@ -107,7 +107,7 @@ describe('Git', function(){
       .status()
       .run(function(err, res){
         if (err) throw new Error('Status not given');
-        var keys = Object.keys(res.message);
+        var keys = Object.keys(res);
         assert(keys[0] === 'untracked');
         assert(keys[1] === 'modified');
         assert(keys[2] === 'created');
@@ -123,7 +123,7 @@ describe('Git', function(){
         if (err) throw new Error('Status not given');
         var msg1 = 'nothing to commit';
         var msg2 = 'Changes not staged for commit';
-        assert(res.message.indexOf(msg1) !== -1 || res.message.indexOf(msg2) !== -1);
+        assert(res.indexOf(msg1) !== -1 || res.indexOf(msg2) !== -1);
         done();
       });
   });
