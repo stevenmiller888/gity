@@ -33,7 +33,7 @@ var git = Git()
 ```js
 var Git = require('gity');
 
-var git = Git({ pretty: false }) // passes stdout into res.message
+var git = Git({ pretty: false }) // passes stdout into res
   .add('*.js')
   .commit('-m "added js files"')
   .status()
