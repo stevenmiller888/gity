@@ -28,9 +28,19 @@ describe('Git()', function(){
     assert(git instanceof Git);
   });
   
-  it('should take options', function(){
+  it('should allow a base option', function(){
     var git = Git({ base: '../' });
     assert(git.base === '../');
+  });
+
+  it('should default pretty option to true', function(){
+    var git = Git();
+    assert(git.pretty);
+  });
+
+  it('should allow pretty option to be false', function(){
+    var git = Git({pretty: false });
+    assert(!git.pretty);
   });
 });
 
@@ -92,9 +102,9 @@ describe('Git', function(){
     });
   });
 
-  it('should give repo\'s status', function(done){
+  it('should give repo\'s pretty status', function(done){
     var git = new Git()
-      .status('--porcelain')
+      .status()
       .run(function(err, res){
         if (err) throw new Error('Status not given');
         var keys = Object.keys(res.message);
@@ -102,6 +112,18 @@ describe('Git', function(){
         assert(keys[1] === 'modified');
         assert(keys[2] === 'created');
         assert(keys[3] === 'deleted');
+        done();
+      });
+  });
+
+  it('should give repo\'s stdout status', function(done){
+    var git = new Git({ pretty: false })
+      .status()
+      .run(function(err, res){
+        if (err) throw new Error('Status not given');
+        var msg1 = 'nothing to commit';
+        var msg2 = 'Changes not staged for commit';
+        assert(res.message.indexOf(msg1) !== -1 || res.message.indexOf(msg2) !== -1);
         done();
       });
   });
