@@ -92,29 +92,17 @@ describe('Git', function(){
     });
   });
 
-  // it('should give repo\'s status', function(done){
-  //   var folder = '../' + uid();
-  //   exec('mkdir ' + folder, function(){
-  //     var git = new Git({ base: folder });
-  //     git.init(folder, function(){ // this sucks
-  //       exec('touch ' + folder + '/index.js', function(){
-  //         exec('cd ' + folder, function(){
-  //           git.status('--porcelain', function(err, res){
-  //             if (err) throw new Error('Status not given');
-  //             var keys = Object.keys(res);
-  //
-  //             assert(keys[0] === 'not_added');
-  //             assert(keys[1] === 'deleted');
-  //             assert(keys[2] === 'modified');
-  //
-  //             exec('cd ' + '../git', function(err, res){
-  //               exec('rm -rf ' + folder);
-  //               done();
-  //             });
-  //           });
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
+  it('should give repo\'s status', function(done){
+    var git = new Git()
+      .status('--porcelain')
+      .run(function(err, res){
+        if (err) throw new Error('Status not given');
+        var keys = Object.keys(res.message);
+        assert(keys[0] === 'untracked');
+        assert(keys[1] === 'modified');
+        assert(keys[2] === 'created');
+        assert(keys[3] === 'deleted');
+        done();
+      });
+  });
 });
