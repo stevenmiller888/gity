@@ -12,7 +12,7 @@ A nice Git wrapper for Node.
 ```js
 var Git = require('gity');
 
-var git = Git({ base: '../repo' })
+var git = Git()
   .add('*.js')
   .commit('-m "added js files"')
   .run();
@@ -21,7 +21,7 @@ var git = Git({ base: '../repo' })
 ```js
 var Git = require('gity');
 
-var git = Git()
+var git = Git({ base: '../repo' })
   .init()
   .add('index.js')
   .commit('-m "added index.js"')
