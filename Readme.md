@@ -52,12 +52,33 @@ git.add('--All');
 git.add('index.js');
 ```
 
+### .checkout()
+
+```js
+git.checkout('feature');
+git.checkout('-b demo');
+```
+
 ### .commit()
 
 ```js
 git.commit('--short');
-git.commit('--porcelain');
 git.commit('-m "testing"');
+```
+
+### .push()
+
+```js
+git.push()
+git.push('origin master');
+git.push('-f origin master');
+```
+
+### .status()
+
+```js
+git.status() // stdout (e.g. "On branch master\nChanges not staged for commit:...")
+git.status('--porcelain'); // { untracked: [], deleted: [], created: [], modified: [] }
 ```
 
 ### .run()
