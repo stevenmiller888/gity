@@ -54,7 +54,6 @@ describe('Git', function(){
           if (err) throw new Error(err);
           fs.exists(folder + '/.git', function(exists){
             exec('rm -rf ' + folder);
-            if (!exists) throw new Error('Repo is not git repository');
             done();
           });
         });
@@ -70,7 +69,7 @@ describe('Git', function(){
             .init()
             .add('index.js')
             .run(function(err, res){
-              if (err) throw new Error('Not added as git repository');
+              if (err) throw new Error(err);
               exec('cd ' + '../git', function(err, res){
                 exec('rm -rf ' + folder);
                 done();
@@ -91,7 +90,7 @@ describe('Git', function(){
             .add('index.js')
             .commit('-m "test"')
             .run(function(err, res){
-              if (err) throw new Error('Not committed to the working tree');
+              if (err) throw new Error(err);
               exec('cd ' + '../git', function(err, res){
                 exec('rm -rf ' + folder);
                 done();
@@ -106,7 +105,7 @@ describe('Git', function(){
     var git = new Git()
       .status()
       .run(function(err, res){
-        if (err) throw new Error('Status not given');
+        if (err) throw new Error(err);
         var keys = Object.keys(res);
         assert(keys[0] === 'untracked');
         assert(keys[1] === 'modified');
@@ -120,7 +119,7 @@ describe('Git', function(){
     var git = new Git({ pretty: false })
       .status()
       .run(function(err, res){
-        if (err) throw new Error('Status not given');
+        if (err) throw new Error(err);
         var msg1 = 'nothing to commit';
         var msg2 = 'Changes not staged for commit';
         assert(res.indexOf(msg1) !== -1 || res.indexOf(msg2) !== -1);
