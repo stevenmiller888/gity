@@ -127,4 +127,15 @@ describe('Git', function(){
         done();
       });
   });
+
+  it('should give the repo\'s branch', function(done){
+    var git = new Git()
+      .checkout('master')
+      .branch()
+      .run(function(err, res){
+        if (err) throw new Error('Branch not given');
+        assert(res === 'master');
+        done();
+      });
+  });
 });
