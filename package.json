@@ -1,8 +1,12 @@
 {
   "name": "gity",
-  "version": "0.0.10",
-  "repository": "stevenmiller888/gity",
+  "version": "0.1.0",
+  "author": "Steven Miller",
   "description": "A nice Git wrapper for Node.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevenmiller888/gity.git"
+  },
   "keywords": [
     "git",
     "wrapper",
