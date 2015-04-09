@@ -80,6 +80,13 @@ git.bisect('bad');
 git.bisect('good');
 ```
 
+##### .branch()
+
+```js
+git.branch(); // (e.g. 'master')
+git.branch('-D feature');
+```
+
 #### .checkout()
 
 ```js
