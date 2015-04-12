@@ -1,7 +1,7 @@
 
 # gity
 
-A nice Git wrapper for Node.
+> A nice Git wrapper for Node.
 
 ## Installation
 
