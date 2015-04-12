@@ -4,8 +4,8 @@
  */
 
 var exec = require('child_process').exec;
+var helpers = require('./helpers');
 var assert = require('assert');
-var uid = require('uid');
 var Git = require('..');
 var fs = require('fs');
 
@@ -45,64 +45,56 @@ describe('Git()', function(){
 });
 
 describe('Git', function(){
-  it('should initialize a git repository', function(done){
-    var folder = '../' + uid();
-    exec('mkdir ' + folder, function(err, res){
-      var git = new Git({ base: folder })
-        .init()
-        .run(function(err, res){
-          if (err) throw new Error(err);
-          fs.exists(folder + '/.git', function(exists){
-            exec('rm -rf ' + folder);
-            done();
-          });
-        });
+  var folder = '/tmp/gity';
+  var git;
+
+  beforeEach(function(done){
+    helpers.setup(function(){
+      git = new Git({ base: folder });
+      done();
     });
+  });
+  
+  afterEach(function(done){
+    helpers.cleanup(done);
+  });
+
+  it('should initialize a git repository', function(done){
+    git
+      .init()
+      .run(function(err, res){
+        if (err) throw new Error(err);
+        fs.exists(folder + '/.git', function(exists){
+          assert(exists);
+          done();
+        });
+      });
   });
   
   it('should add files to staging area', function(done){
-    var folder = '../' + uid();
-    exec('mkdir ' + folder, function(){
-      exec('touch ' + folder + '/index.js', function(){
-        exec('cd ' + folder, function(){
-          var git = new Git({ base: folder })
-            .init()
-            .add('index.js')
-            .run(function(err, res){
-              if (err) throw new Error(err);
-              exec('cd ' + '../git', function(err, res){
-                exec('rm -rf ' + folder);
-                done();
-              });
-            });
-        });
+    git
+      .init()
+      .add('index.js')
+      .run(function(err, res){
+        if (err) throw new Error(err);
+        done();
       });
-    });
   });
   
   it('should commit to working tree', function(done){
-    var folder = '../' + uid();
-    exec('mkdir ' + folder, function(){
-      exec('touch ' + folder + '/index.js', function(){
-        exec('cd ' + folder, function(){
-          var git = new Git({ base: folder })
-            .init()
-            .add('index.js')
-            .commit('-m "test"')
-            .run(function(err, res){
-              if (err) throw new Error(err);
-              exec('cd ' + '../git', function(err, res){
-                exec('rm -rf ' + folder);
-                done();
-              });
-            })
-        });
-      });
-    });
+    git
+      .init()
+      .add('index.js')
+      .commit('-m "test"')
+      .run(function(err, res){
+        if (err) throw new Error(err);
+        done();
+      })
   });
-
+  
   it('should give repo\'s pretty status', function(done){
-    var git = new Git()
+    git
+      .init()
       .status()
       .run(function(err, res){
         if (err) throw new Error(err);
@@ -116,24 +108,14 @@ describe('Git', function(){
   });
 
   it('should give repo\'s stdout status', function(done){
-    var git = new Git({ pretty: false })
+    new Git({ base: folder, pretty: false })
+      .init()
       .status()
       .run(function(err, res){
         if (err) throw new Error(err);
-        var msg1 = 'nothing to commit';
-        var msg2 = 'Changes not staged for commit';
+        var msg1 = 'nothing added to commit but untracked files present';
+        var msg2 = 'use "git add <file>..." to include in what will be';
         assert(res.indexOf(msg1) !== -1 || res.indexOf(msg2) !== -1);
-        done();
-      });
-  });
-
-  it('should give the repo\'s branch', function(done){
-    var git = new Git()
-      .checkout('master')
-      .branch()
-      .run(function(err, res){
-        if (err) throw new Error('Branch not given');
-        assert(res === 'master');
         done();
       });
   });
