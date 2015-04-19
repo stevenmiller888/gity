@@ -1,6 +1,6 @@
 {
   "name": "gity",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Steven Miller",
   "description": "A nice Git wrapper for Node.",
   "repository": {
@@ -19,7 +19,7 @@
     "uid": "0.0.2"
   },
   "dependencies": {
-    "ware": "^1.2.0"
+    "wrap-fn": "^0.1.4"
   },
   "license": "MIT"
 }
