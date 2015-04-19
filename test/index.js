@@ -39,7 +39,7 @@ describe('Git()', function(){
   });
 
   it('should allow pretty option to be false', function(){
-    var git = Git({pretty: false });
+    var git = Git({ pretty: false });
     assert(!git.pretty);
   });
 });
