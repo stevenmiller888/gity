@@ -10,6 +10,12 @@
 npm install gity
 ```
 
+## Features
+  - Simple, chainable API
+  - Small and only one dependency
+  - Supports all of the most common git commands
+  - By default, provides nicely parsed output from commands like `status` and `log`
+
 ## Examples
 
 ```js
@@ -57,7 +63,7 @@ var git = Git({ base: '../repo' }) // sets the base folder to '../repo'
 
 ## API
 
-#### Git(options)
+### Git(options)
 
 Create a new instance of Gity.
 
@@ -66,7 +72,7 @@ The available options are:
 - `base`: set the base folder to run the command from, default `process.cwd()`.
 - `pretty`: give pretty output instead of stdout, default `true`.
 
-##### .add()
+### .add()
 
 ```js
 git.add('-A');
@@ -75,7 +81,7 @@ git.add('--All');
 git.add('index.js');
 ```
 
-##### .bisect()
+### .bisect()
 
 ```js
 git.bisect('start');
@@ -83,34 +89,34 @@ git.bisect('bad');
 git.bisect('good');
 ```
 
-##### .branch()
+### .branch()
 
 ```js
 git.branch(); // (e.g. 'master')
 git.branch('-D feature');
 ```
 
-#### .checkout()
+### .checkout()
 
 ```js
 git.checkout('feature');
 git.checkout('-b demo');
 ```
 
-#### .clone()
+### .clone()
 
 ```js
 git.clone('git://git.kernel.org/pub/scm/.../linux.git my-linux');
 ```
 
-#### .commit()
+### .commit()
 
 ```js
 git.commit('--short');
 git.commit('-m "testing"');
 ```
 
-#### .diff()
+### .diff()
 
 ```js
 git.diff('topic master');
@@ -118,27 +124,27 @@ git.diff('Readme.md package.json');
 git.diff('git diff --name-status');
 ```
 
-#### .fetch()
+### .fetch()
 
 ```js
 git.fetch();
 git.fetch('origin');
 ```
 
-#### .grep()
+### .grep()
 
 ```js
 git.grep("'time_t' -- '*.[ch]'");
 ```
 
-#### .init()
+### .init()
 
 ```js
 git.init();
 git.init('-q');
 ```
 
-#### .log()
+### .log()
 
 ```js
 git.log();
@@ -146,26 +152,26 @@ git.log('git log --no-merges');
 git.log('git log --since="2 weeks ago" -- gitk');
 ```
 
-#### .merge()
+### .merge()
 
 ```js
 git.merge('origin/next');
 ```
 
-#### .mv()
+### .mv()
 
 ```js
 git.mv('oldname newname');
 ```
 
-#### .pull()
+### .pull()
 
 ```js
 git.pull();
 git.pull('origin master');
 ```
 
-#### .push()
+### .push()
 
 ```js
 git.push()
@@ -173,14 +179,14 @@ git.push('origin master');
 git.push('-f origin master');
 ```
 
-#### .rebase()
+### .rebase()
 
 ```js
 git.rebase('master');
 git.rebase('--onto master next topic');
 ```
 
-#### .reset()
+### .reset()
 
 ```js
 git.reset();
@@ -188,39 +194,39 @@ git.reset('--soft HEAD^');
 git.reset('--hard HEAD~3');
 ```
 
-#### .rm()
+### .rm()
 
 ```js
 git.rm('oldname');
 ```
 
-#### .show()
+### .show()
 
 ```js
 git.show('--pretty="format:" --name-only bd61ad98');
 ```
 
-#### .status()
+### .status()
 
 ```js
 git.status();
 git.status('--porcelain');
 ```
 
-#### .tag()
+### .tag()
 
 ```js
 git.tag('-d X');
 ```
 
-#### .run()
+### .run()
 
 ```js
 git.run();
 git.run(function(err, res){
   if (err) throw err;
   console.log(res);
-})
+});
 ```
 
 ## License
