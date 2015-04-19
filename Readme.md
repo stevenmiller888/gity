@@ -6,9 +6,9 @@
 
 > A nice Git wrapper for Node.
 
-## Installation
-
-    $ npm install gity
+```bash
+npm install gity
+```
 
 ## Examples
 
