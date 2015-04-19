@@ -1,0 +1,6 @@
+machine:
+  pre:
+    - git config --global user.email "you@example.com"
+    - git config --global user.name "Your Name"
+  node:
+    version: 0.12

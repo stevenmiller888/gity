@@ -17,17 +17,17 @@ describe('Git()', function(){
   it('should be a function', function(){
     assert.equal(typeof Git, 'function');
   });
-  
+
   it('should be a constructor', function(){
     var git = new Git();
     assert(git instanceof Git);
   });
-  
+
   it('should not require the new keyword', function(){
     var git = Git();
     assert(git instanceof Git);
   });
-  
+
   it('should allow a base option', function(){
     var git = Git({ base: '../' });
     assert(git.base === '../');
@@ -39,7 +39,7 @@ describe('Git()', function(){
   });
 
   it('should allow pretty option to be false', function(){
-    var git = Git({pretty: false });
+    var git = Git({ pretty: false });
     assert(!git.pretty);
   });
 });
@@ -54,7 +54,7 @@ describe('Git', function(){
       done();
     });
   });
-  
+
   afterEach(function(done){
     helpers.cleanup(done);
   });
@@ -70,7 +70,7 @@ describe('Git', function(){
         });
       });
   });
-  
+
   it('should add files to staging area', function(done){
     git
       .init()
@@ -80,7 +80,7 @@ describe('Git', function(){
         done();
       });
   });
-  
+
   it('should commit to working tree', function(done){
     git
       .init()
@@ -91,7 +91,7 @@ describe('Git', function(){
         done();
       })
   });
-  
+
   it('should give repo\'s pretty status', function(done){
     git
       .init()

@@ -1,5 +1,8 @@
 
 # gity
+[![NPM version][npm-image]][npm-url]
+[![build status][circle-image]][circle-url]
+[![license][license-image]][license-url]
 
 > A nice Git wrapper for Node.
 
@@ -223,3 +226,10 @@ git.run(function(err, res){
 ## License
 
 MIT
+
+[npm-image]: https://img.shields.io/npm/v/gity.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/gity
+[circle-image]: https://img.shields.io/circleci/project/stevenmiller888/gity.svg
+[circle-url]: https://circleci.com/gh/stevenmiller888/gity
+[license-image]: https://img.shields.io/npm/l/express.svg
+[license-url]: https://tldrlegal.com/license/mit-license
