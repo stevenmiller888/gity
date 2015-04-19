@@ -231,5 +231,5 @@ MIT
 [npm-url]: https://npmjs.org/package/gity
 [circle-image]: https://img.shields.io/circleci/project/stevenmiller888/gity.svg
 [circle-url]: https://circleci.com/gh/stevenmiller888/gity
-[license-image]: https://img.shields.io/packagist/l/stevenmiller888/gity.svg
+[license-image]: https://img.shields.io/npm/l/express.svg
 [license-url]: https://tldrlegal.com/license/mit-license
