@@ -119,4 +119,17 @@ describe('Git', function(){
         done();
       });
   });
+  
+  it('should give the pretty log', function(done){
+    git
+      .init()
+      .add('index.js')
+      .commit('-m "test"')
+      .log()
+      .run(function(err, res){
+        if (err) throw new Error(err);
+        assert(res.indexOf('stevenmiller888 - test'));
+        done();
+      });
+  });
 });
