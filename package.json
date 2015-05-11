@@ -1,6 +1,6 @@
 {
   "name": "gity",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Steven Miller",
   "description": "A nice Git wrapper for Node.",
   "repository": {
