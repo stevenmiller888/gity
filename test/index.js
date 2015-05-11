@@ -129,7 +129,7 @@ describe('Git', function(){
       .run(function(err, res){
         if (err) throw new Error(err);
         var hash = Object.keys(res)[0];
-        assert(res[hash].author === 'stevenmiller888');
+        assert(res[hash].author);
         done();
       });
   });
