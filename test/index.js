@@ -128,7 +128,8 @@ describe('Git', function(){
       .log()
       .run(function(err, res){
         if (err) throw new Error(err);
-        assert(res.indexOf('stevenmiller888 - test'));
+        var hash = Object.keys(res)[0];
+        assert(res[hash].author === 'stevenmiller888');
         done();
       });
   });
