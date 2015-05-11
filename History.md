@@ -1,4 +1,9 @@
 
+1.0.4 - May 10, 2015
+--------------------
+
+  * Added nicer output for `git log`
+
 1.0.3 - Apr 19, 2015
 --------------------
 
@@ -12,17 +17,17 @@
 1.0.1 - Apr 11, 2015
 --------------------
 
-  * Clean up tests
+  * Cleaned up tests
 
 1.0.0 - Apr 8, 2015
 --------------------
 
-  * Add nicer output for `git branch`
+  * Added nicer output for `git branch`
 
 0.0.10 - Apr 8, 2015
 --------------------
 
-  * Pass res.message into callback
+  * Passed `res.message` into callback
 
 0.0.9 - Apr 8, 2015
 --------------------
